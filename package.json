@@ -1,0 +1,86 @@
+{
+  "name": "@turbo-eth/core-wagmi",
+  "version": "0.0.0-beta.3",
+  "license": "MIT",
+  "author": "Kames Geraghty",
+  "source": "src/index.tsx",
+  "main": "dist/core-wagmi.js",
+  "exports": {
+    "import": "./dist/core-wagmi.modern.js",
+    "require": "./dist/index.js"
+  },
+  "umd:main": "dist/core-wagmi.umd.js",
+  "module": "dist/core-wagmi.modern.js",
+  "unpkg": "./dist/core-wagmi.umd.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "analyze": "size-limit --why",
+    "build": "microbundle --jsx React.createElement",
+    "lint": "dts lint",
+    "prepare": "husky install ; microbundle",
+    "size": "size-limit",
+    "start": "dts watch",
+    "test": "dts test --passWithNoTests"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "dts lint",
+      "commit-msg": "dts lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
+  "peerDependencies": {
+    "@rainbow-me/rainbowkit": "0.8.1",
+    "ethers": "^5.7.2",
+    "react": ">=16",
+    "wagmi": "^0.9.2"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "size-limit": [
+    {
+      "path": "dist/core-wagmi.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/core-wagmi.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@commitlint/config-conventional": "^17.3.0",
+    "@size-limit/preset-small-lib": "^8.1.0",
+    "@tsconfig/create-react-app": "^1.0.3",
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/prop-types": "^15.7.5",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.10",
+    "dts-cli": "^1.6.3",
+    "husky": "^8.0.2",
+    "microbundle": "^0.15.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "size-limit": "^8.1.0",
+    "tslib": "^2.4.1",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "classnames": "2.3.1",
+    "ethers": "^5.7.2",
+    "prop-types": "15.8.1",
+    "wagmi": "^0.9.2"
+  }
+}
