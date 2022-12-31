@@ -1,19 +1,14 @@
-/* eslint-disable @next/next/no-img-element */
-//@ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
-import { toLink, toURL } from 'to-ipfs-url';
 
 interface IpfsUriImageBackgroundRenderProps {
   className?: string;
   uri: string;
-  alt?: string;
 }
 
 export const IpfsUriImageBackgroundRender = ({
   className,
   uri,
-  alt = '',
 }: IpfsUriImageBackgroundRenderProps) => {
   const classes = classNames(className, 'IpfsUriImageBackgroundRender');
 
@@ -24,7 +19,7 @@ export const IpfsUriImageBackgroundRender = ({
     }
   }, [uri]);
   return (
-    <div className={classes} style={{ position: 'relative' }}>
+    <span className={classes} style={{ position: 'relative' }}>
       <div
         style={{
           backgroundImage: `url(${imgSrc})`,
@@ -36,7 +31,7 @@ export const IpfsUriImageBackgroundRender = ({
           width: '100%',
         }}
       />
-    </div>
+    </span>
   );
 };
 

@@ -22,9 +22,9 @@ export const WalletAddress = ({
   if (!isConnected && msgActive)
     return <span className={className}>{msg}</span>;
   return (
-    <div className={classes}>
+    <span className={classes}>
       <Address address={address} truncate={truncate} />{' '}
-    </div>
+    </span>
   );
 };
 

@@ -11,7 +11,7 @@ export const BlockNumber = ({ className }: BlockNumberProps) => {
   const { data, isError, isLoading } = useBlockNumber();
 
   if (isLoading || isError) return null;
-  return <div className={classes}>{data}</div>;
+  return <span className={classes}>{data}</span>;
 };
 
 export default BlockNumber;

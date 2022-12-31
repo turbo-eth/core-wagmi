@@ -29,7 +29,7 @@ export const WalletNonce = ({
   if ((isError || (!isError && !nonce)) && !msgActive) return null;
   if ((isError || (!isError && !nonce)) && msgActive)
     return <span className={className}>{msg}</span>;
-  return <div className={classes}>{nonce}</div>;
+  return <span className={classes}>{nonce}</span>;
 };
 
 WalletNonce.defaultProps = {

@@ -24,7 +24,7 @@ export const EnsAddress = ({
   if ((isError || (!isError && !data)) && !msgActive) return null;
   if ((isError || (!isError && !data)) && msgActive)
     return <span className={className}>{msg}</span>;
-  return <div className={classes}>{data}</div>;
+  return <span className={classes}>{data}</span>;
 };
 
 EnsAddress.defaultProps = {

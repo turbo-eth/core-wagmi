@@ -23,9 +23,9 @@ export const WalletBalance = ({
   if (!isConnected && msgActive)
     return <span className={className}>{msg}</span>;
   return (
-    <div className={classes}>
+    <span className={classes}>
       {data?.formatted} {data?.symbol}
-    </div>
+    </span>
   );
 };
 

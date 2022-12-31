@@ -4,7 +4,7 @@ import { useBalance } from 'wagmi';
 
 interface BalanceProps {
   className?: string;
-  address:`0x${string}`
+  address: `0x${string}`;
 }
 
 export const Balance = ({ className, address }: BalanceProps) => {
@@ -15,9 +15,9 @@ export const Balance = ({ className, address }: BalanceProps) => {
 
   if (isLoading || isError) return null;
   return (
-    <div className={classes}>
+    <span className={classes}>
       {data?.formatted} {data?.symbol}
-    </div>
+    </span>
   );
 };
 

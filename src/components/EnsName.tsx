@@ -5,7 +5,7 @@ import Address from './Address';
 
 interface EnsNameProps {
   className?: string;
-  address:`0x${string}`
+  address: `0x${string}`;
   truncate: boolean;
 }
 
@@ -24,7 +24,7 @@ export const EnsName = ({
       <Address truncate={truncate} address={address} className={classes} />
     );
   }
-  return <div className={classes}>{data}</div>;
+  return <span className={classes}>{data}</span>;
 };
 
 export default EnsName;

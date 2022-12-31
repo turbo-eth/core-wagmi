@@ -4,7 +4,7 @@ import truncateAddress from '../utils/truncateAddress';
 
 interface AddressProps {
   className?: string;
-  address?:`0x${string}`
+  address?: `0x${string}`;
   truncate?: boolean;
   length?: number;
 }

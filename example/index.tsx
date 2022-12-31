@@ -7,7 +7,7 @@ const App = () => {
   return (
     <div>
       <Thing />
-    </div>
+    </span>
   );
 };
 

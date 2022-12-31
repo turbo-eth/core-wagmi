@@ -21,7 +21,7 @@ export const WalletEnsName = ({
   if (!isConnected && !msgActive) return null;
   if (!isConnected && msgActive)
     return <span className={className}>{msg}</span>;
-  return <div className={classes}>{dataEnsName}</div>;
+  return <span className={classes}>{dataEnsName}</span>;
 };
 
 WalletEnsName.defaultProps = {
