@@ -15,11 +15,11 @@ export const EnsName = ({
   truncate = false,
 }: EnsNameProps) => {
   const classes = classNames(className, 'EnsName');
-  const { data, isError, isLoading } = useEnsName({
+  const { data, isSuccess } = useEnsName({
     address: address,
   });
-  if (isLoading) return null;
-  if (!data || isLoading || isError) {
+  if (!isSuccess) return null;
+  if (!data) {
     return (
       <Address truncate={truncate} address={address} className={classes} />
     );

@@ -7,3 +7,5 @@ export { WalletAddress } from './components/WalletAddress';
 export { WalletBalance } from './components/WalletBalance';
 export { WalletEnsName } from './components/WalletEnsName';
 export { WalletNonce } from './components/WalletNonce';
+export { truncateAddress } from './utils/truncateAddress';
+export { trimFormattedBalance } from './utils/trimFormattedBalance';

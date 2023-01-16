@@ -23,10 +23,10 @@
   "scripts": {
     "analyze": "size-limit --why",
     "build": "microbundle --jsx React.createElement",
+    "start": "microbundle --jsx React.createElement watch",
     "lint": "dts lint",
     "prepare": "husky install ; microbundle",
     "size": "size-limit",
-    "start": "microbundle --jsx React.createElement watch",
     "test": "dts test --passWithNoTests"
   },
   "husky": {

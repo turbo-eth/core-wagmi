@@ -16,25 +16,20 @@ export const Address = ({
   truncate,
   address,
   isLink,
-  styled
+  styled,
 }: AddressProps) => {
-  const classes = classNames('Address', {styled, isLink}, className);
+  const classes = classNames('Address', { styled, isLink }, className);
   const { chain } = useNetwork();
   const newAddress = truncate ? truncateAddress(address) : address;
   const url = chain?.blockExplorers?.default.url + '/address/' + address;
   if (isLink) {
     return (
-      <a
-        className={classes}
-        href={url}
-        target="_blank"
-        rel="noreferrer"
-      >
+      <a className={classes} href={url} target="_blank" rel="noreferrer">
         {newAddress}
       </a>
     );
   }
-  return <span className={classes}>{address}</span>;
+  return <span className={classes}>{newAddress}</span>;
 };
 
 export default Address;

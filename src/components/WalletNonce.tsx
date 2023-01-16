@@ -4,18 +4,16 @@ import { useSigner } from 'wagmi';
 
 interface WalletNonceProps {
   className?: string;
-  msg?: string;
-  msgActive: boolean;
+  styled?: boolean;
 }
 
 export const WalletNonce = ({
   className,
-  msg,
-  msgActive,
+  styled,
 }: WalletNonceProps) => {
-  const classes = classNames(className, 'WalletNonce');
-  const { data: signer, isLoading, isError } = useSigner();
-  const [nonce, setNonce] = React.useState<number>();
+  const classes = classNames(className, 'WalletNonce', {styled});
+  const { data: signer, isSuccess } = useSigner();
+  const [nonce, setNonce] = React.useState<number>(0);
   React.useEffect(() => {
     (async () => {
       if (signer) {
@@ -23,19 +21,8 @@ export const WalletNonce = ({
         setNonce(nonce);
       }
     })();
-  }, [isLoading, signer]);
-
-  if (isLoading) return null;
-  if ((isError || (!isError && !nonce)) && !msgActive) return null;
-  if ((isError || (!isError && !nonce)) && msgActive)
-    return <span className={className}>{msg}</span>;
+  }, [isSuccess, signer]);
   return <span className={classes}>{nonce}</span>;
-};
-
-WalletNonce.defaultProps = {
-  msg: 'Connect Wallet',
-  msgActive: false,
-  truncate: false,
 };
 
 export default WalletNonce;

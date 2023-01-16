@@ -8,21 +8,14 @@ interface EnsAddressProps {
   styled?: boolean;
 }
 
-export const EnsAddress = ({
-  className,
-  name,
-  styled
-}: EnsAddressProps) => {
-  const classes = classNames('EnsAddress', {styled}, className);
-  const { data, isError, isLoading } = useEnsAddress({
+export const EnsAddress = ({ className, name, styled }: EnsAddressProps) => {
+  const classes = classNames('EnsAddress', { styled }, className);
+  const { data, isSuccess } = useEnsAddress({
     name: name,
   });
 
-  if (!data || isLoading || isError) return null;
+  if (!data || !isSuccess) return null;
   return <span className={classes}>{data}</span>;
-};
-
-EnsAddress.defaultProps = {
 };
 
 export default EnsAddress;

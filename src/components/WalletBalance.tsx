@@ -9,24 +9,22 @@ interface WalletBalanceProps {
   styled?: boolean;
 }
 
-
 export const WalletBalance = ({
   className,
   decimals,
-  styled
+  styled,
 }: WalletBalanceProps) => {
-  const classes = classNames('WalletBalance' , {styled}, className);
+  const classes = classNames('WalletBalance', { styled }, className);
 
   const { address, isConnected } = useAccount();
-  const { data } = useBalance({
+  const { data, isSuccess } = useBalance({
     address: address,
   });
 
-  if(!isConnected) return null;
-
+  if (!isConnected || !isSuccess) return null;
   return (
     <span className={classes}>
-      {trimFormattedBalance(data?.formatted, decimals)} {data?.symbol}
+      {trimFormattedBalance(data?.formatted, decimals)}
     </span>
   );
 };

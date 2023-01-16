@@ -7,17 +7,14 @@ interface WalletEnsNameProps {
   styled?: boolean;
 }
 
-export const WalletEnsName = ({
-  className,
-  styled
-}: WalletEnsNameProps) => {
-  const classes = classNames('WalletEnsName', {styled}, className);
+export const WalletEnsName = ({ className, styled }: WalletEnsNameProps) => {
+  const classes = classNames('WalletEnsName', { styled }, className);
   const { address, isConnected } = useAccount();
-  const { data, isError, isLoading } = useEnsName({
+  const { data, isSuccess } = useEnsName({
     address: address,
   });
-  
-  if (!isConnected || !data || isLoading || isError) return null;
+
+  if (!isConnected || !data || !isSuccess) return null;
   return <span className={classes}>{data}</span>;
 };
 

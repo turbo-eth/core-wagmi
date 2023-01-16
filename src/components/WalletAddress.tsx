@@ -18,12 +18,17 @@ export const WalletAddress = ({
   isLink,
   styled,
 }: WalletAddressProps) => {
-  const classes = classNames('WalletAddress', className, {styled});
+  const classes = classNames('WalletAddress', className, { styled });
   const { address, isConnected } = useAccount();
   if (!isConnected) return null;
   return (
     <span className={classes}>
-      <Address className={classNameAddress} address={address} truncate={truncate} isLink={isLink} />
+      <Address
+        className={classNameAddress}
+        address={address}
+        truncate={truncate}
+        isLink={isLink}
+      />
     </span>
   );
 };

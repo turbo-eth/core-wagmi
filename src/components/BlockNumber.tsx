@@ -8,10 +8,10 @@ interface BlockNumberProps {
 }
 
 export const BlockNumber = ({ className, styled }: BlockNumberProps) => {
-  const classes = classNames('BlockNumber', {styled}, className);
-  const { data, isError, isLoading } = useBlockNumber();
+  const classes = classNames('BlockNumber', { styled }, className);
+  const { data, isSuccess } = useBlockNumber();
 
-  if (!data || isLoading || isError) return null;
+  if (!data || !isSuccess) return <span className={classes}>0</span>;
   return <span className={classes}>{data}</span>;
 };
 
