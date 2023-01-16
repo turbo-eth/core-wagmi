@@ -10,7 +10,12 @@ interface BalanceProps {
   styled?: boolean;
 }
 
-export const Balance = ({ className, styled, address, decimals }: BalanceProps) => {
+export const Balance = ({
+  className,
+  styled,
+  address,
+  decimals,
+}: BalanceProps) => {
   const classes = classNames('Balance', { styled }, className);
   const { data, isSuccess } = useBalance({
     address: address,

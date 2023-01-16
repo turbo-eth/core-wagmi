@@ -7,11 +7,8 @@ interface WalletNonceProps {
   styled?: boolean;
 }
 
-export const WalletNonce = ({
-  className,
-  styled,
-}: WalletNonceProps) => {
-  const classes = classNames(className, 'WalletNonce', {styled});
+export const WalletNonce = ({ className, styled }: WalletNonceProps) => {
+  const classes = classNames(className, 'WalletNonce', { styled });
   const { data: signer, isSuccess } = useSigner();
   const [nonce, setNonce] = React.useState<number>(0);
   React.useEffect(() => {
