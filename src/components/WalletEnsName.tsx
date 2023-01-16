@@ -1,33 +1,24 @@
 import * as React from 'react';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import { useAccount, useEnsName } from 'wagmi';
 
 interface WalletEnsNameProps {
   className?: string;
-  msg?: string;
-  msgActive: boolean;
+  styled?: boolean;
 }
 
 export const WalletEnsName = ({
   className,
-  msg,
-  msgActive,
+  styled
 }: WalletEnsNameProps) => {
-  const classes = classNames(className, 'WalletEnsName');
+  const classes = classNames('WalletEnsName', {styled}, className);
   const { address, isConnected } = useAccount();
-  const { data: dataEnsName } = useEnsName({
+  const { data, isError, isLoading } = useEnsName({
     address: address,
   });
-  if (!isConnected && !msgActive) return null;
-  if (!isConnected && msgActive)
-    return <span className={className}>{msg}</span>;
-  return <span className={classes}>{dataEnsName}</span>;
-};
-
-WalletEnsName.defaultProps = {
-  msg: 'Connect Wallet',
-  msgActive: false,
-  truncate: false,
+  
+  if (!isConnected || !data || isLoading || isError) return null;
+  return <span className={classes}>{data}</span>;
 };
 
 export default WalletEnsName;

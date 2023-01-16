@@ -1,5 +1,5 @@
 import * as React from 'react';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import { useEnsName } from 'wagmi';
 import Address from './Address';
 
@@ -19,7 +19,7 @@ export const EnsName = ({
     address: address,
   });
   if (isLoading) return null;
-  if (isError || !isLoading) {
+  if (!data || isLoading || isError) {
     return (
       <Address truncate={truncate} address={address} className={classes} />
     );

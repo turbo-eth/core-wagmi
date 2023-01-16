@@ -1,22 +1,23 @@
 import * as React from 'react';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import { useBalance } from 'wagmi';
 
 interface BalanceProps {
   className?: string;
   address: `0x${string}`;
+  styled?: boolean;
 }
 
-export const Balance = ({ className, address }: BalanceProps) => {
-  const classes = classNames(className, 'Balance');
+export const Balance = ({ className, styled, address }: BalanceProps) => {
+  const classes = classNames('Balance', {styled}, className);
   const { data, isLoading, isError } = useBalance({
     address: address,
   });
 
-  if (isLoading || isError) return null;
+  if (!data?.value || isLoading || isError) return null;
   return (
     <span className={classes}>
-      {data?.formatted} {data?.symbol}
+      {data?.value.div(1e4).toString()} {data?.symbol}
     </span>
   );
 };

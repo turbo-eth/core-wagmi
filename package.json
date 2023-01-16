@@ -26,7 +26,7 @@
     "lint": "dts lint",
     "prepare": "husky install ; microbundle",
     "size": "size-limit",
-    "start": "dts watch",
+    "start": "microbundle --jsx React.createElement watch",
     "test": "dts test --passWithNoTests"
   },
   "husky": {
@@ -86,6 +86,7 @@
   },
   "dependencies": {
     "classnames": "2.3.1",
+    "clsx": "^1.2.1",
     "ethers": "5.7.2",
     "prop-types": "15.8.1",
     "react-native": "^0.71.0",

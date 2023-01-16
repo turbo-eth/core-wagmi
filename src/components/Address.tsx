@@ -1,25 +1,39 @@
 import * as React from 'react';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import truncateAddress from '../utils/truncateAddress';
+import { useNetwork } from 'wagmi';
 
 interface AddressProps {
   className?: string;
   address?: `0x${string}`;
   truncate?: boolean;
-  length?: number;
+  isLink?: boolean;
+  styled?: boolean;
 }
 
 export const Address = ({
   className,
   truncate,
-  address = '0x00',
+  address,
+  isLink,
+  styled
 }: AddressProps) => {
-  const classes = classNames(className, 'Address');
-
-  if (truncate) {
-    return <span className={classes}>{truncateAddress(address)}</span>;
+  const classes = classNames('Address', {styled, isLink}, className);
+  const { chain } = useNetwork();
+  const newAddress = truncate ? truncateAddress(address) : address;
+  const url = chain?.blockExplorers?.default.url + '/address/' + address;
+  if (isLink) {
+    return (
+      <a
+        className={classes}
+        href={url}
+        target="_blank"
+        rel="noreferrer"
+      >
+        {newAddress}
+      </a>
+    );
   }
-
   return <span className={classes}>{address}</span>;
 };
 

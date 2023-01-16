@@ -1,36 +1,34 @@
 import * as React from 'react';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import { useAccount } from 'wagmi';
 import Address from './Address';
 
 interface WalletAddressProps {
   className?: string;
-  msg?: string;
-  msgActive: boolean;
+  classNameAddress?: string;
   truncate: boolean;
+  isLink?: boolean;
+  styled?: boolean;
 }
 
 export const WalletAddress = ({
   className,
+  classNameAddress,
   truncate,
-  msg,
-  msgActive,
+  isLink,
+  styled,
 }: WalletAddressProps) => {
-  const classes = classNames(className, 'WalletAddress');
+  const classes = classNames('WalletAddress', className, {styled});
   const { address, isConnected } = useAccount();
-  if (!isConnected && !msgActive) return null;
-  if (!isConnected && msgActive)
-    return <span className={className}>{msg}</span>;
+  if (!isConnected) return null;
   return (
     <span className={classes}>
-      <Address address={address} truncate={truncate} />{' '}
+      <Address className={classNameAddress} address={address} truncate={truncate} isLink={isLink} />
     </span>
   );
 };
 
 WalletAddress.defaultProps = {
-  msg: 'Connect Wallet',
-  msgActive: false,
   truncate: false,
 };
 

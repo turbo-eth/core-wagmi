@@ -1,37 +1,38 @@
 import * as React from 'react';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import { useAccount, useBalance } from 'wagmi';
+import { trimFormattedBalance } from '../utils/trimFormattedBalance';
 
 interface WalletBalanceProps {
   className?: string;
-  msg?: string;
-  msgActive: boolean;
+  decimals?: number;
+  styled?: boolean;
 }
+
 
 export const WalletBalance = ({
   className,
-  msg,
-  msgActive,
+  decimals,
+  styled
 }: WalletBalanceProps) => {
-  const classes = classNames(className, 'WalletBalance');
+  const classes = classNames('WalletBalance' , {styled}, className);
 
   const { address, isConnected } = useAccount();
   const { data } = useBalance({
     address: address,
   });
-  if (!isConnected && !msgActive) return null;
-  if (!isConnected && msgActive)
-    return <span className={className}>{msg}</span>;
+
+  if(!isConnected) return null;
+
   return (
     <span className={classes}>
-      {data?.formatted} {data?.symbol}
+      {trimFormattedBalance(data?.formatted, decimals)} {data?.symbol}
     </span>
   );
 };
 
 WalletBalance.defaultProps = {
-  msg: 'Connect Wallet',
-  msgActive: false,
+  decimals: 4,
   truncate: false,
 };
 
