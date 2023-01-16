@@ -1,6 +1,6 @@
 {
   "name": "@turbo-eth/core-wagmi",
-  "version": "0.0.0-beta.3",
+  "version": "0.0.0-beta.4",
   "license": "MIT",
   "author": "Kames Geraghty",
   "source": "src/index.tsx",
