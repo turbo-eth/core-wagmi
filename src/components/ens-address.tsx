@@ -17,5 +17,3 @@ export const EnsAddress = ({ className, name, styled }: EnsAddressProps) => {
   if (!data || !isSuccess) return null;
   return <span className={classes}>{data}</span>;
 };
-
-export default EnsAddress;

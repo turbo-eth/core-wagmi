@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'clsx';
 import { useEnsName } from 'wagmi';
-import Address from './Address';
+import { Address } from './address';
 
 interface EnsNameProps {
   className?: string;
@@ -26,5 +26,3 @@ export const EnsName = ({
   }
   return <span className={classes}>{data}</span>;
 };
-
-export default EnsName;

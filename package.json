@@ -1,6 +1,6 @@
 {
   "name": "@turbo-eth/core-wagmi",
-  "version": "0.0.0-beta.4",
+  "version": "0.0.0-beta.5",
   "license": "MIT",
   "author": "Kames Geraghty",
   "source": "src/index.tsx",
@@ -27,7 +27,9 @@
     "lint": "dts lint",
     "prepare": "husky install ; microbundle",
     "size": "size-limit",
-    "test": "dts test --passWithNoTests"
+    "test": "dts test --passWithNoTests",
+    "docs": "yarn typedoc --plugin typedoc-plugin-markdown --hideBreadcrumbs true --namedAnchors true --entryDocument index.md",
+    "docs:html": "yarn typedoc --plugin none --out docs"
   },
   "husky": {
     "hooks": {
@@ -44,42 +46,39 @@
   "jest": {
     "testEnvironment": "jsdom"
   },
-  "peerDependencies": {
-    "@rainbow-me/rainbowkit": "0.8.1",
-    "@tanstack/query-core": "^4.3.8",
-    "@tanstack/react-query": "^4.3.9",
-    "ethers": "5.7.2",
-    "react": ">=17",
-    "react-dom": ">=17",
-    "wagmi": "0.9.x"
-  },
   "engines": {
     "node": ">=12"
   },
   "size-limit": [
     {
-      "path": "dist/core-wagmi.cjs.production.min.js",
-      "limit": "10 KB"
+      "path": "dist/index.cjs.production.min.js",
+      "limit": "32 KB"
     },
     {
-      "path": "dist/core-wagmi.esm.js",
-      "limit": "10 KB"
+      "path": "dist/index.esm.js",
+      "limit": "32 KB"
     }
   ],
   "devDependencies": {
     "@babel/core": "7.18.5",
+    "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
     "@size-limit/preset-small-lib": "^8.1.0",
     "@tsconfig/create-react-app": "^1.0.3",
     "@tsconfig/recommended": "^1.0.1",
+    "@types/mocha": "^10.0.1",
     "@types/prop-types": "^15.7.5",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
     "dts-cli": "^1.6.3",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^8.0.2",
     "microbundle": "^0.15.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "typedoc": "^0.22.10",
+    "typedoc-plugin-markdown": "^3.11.8",
+    "react": ">=17",
+    "react-dom": ">=17",
     "size-limit": "^8.1.0",
     "tslib": "^2.4.1",
     "typescript": "^4.9.4"
@@ -87,9 +86,8 @@
   "dependencies": {
     "classnames": "2.3.1",
     "clsx": "^1.2.1",
-    "ethers": "5.7.2",
     "prop-types": "15.8.1",
-    "react-native": "^0.71.0",
-    "wagmi": "0.9.x"
+    "viem": "^0.1.7",
+    "wagmi": "0.11.7"
   }
 }

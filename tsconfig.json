@@ -1,7 +1,12 @@
 {
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
   "extends": "@tsconfig/create-react-app/tsconfig.json",
-  "include": ["src", "types"],
+  "include": ["src", "types", "test"],
+  "typedocOptions": {
+    "entryPoints": ["./src/index.tsx"],
+    "out": "docs",
+    "readme": "README.md"
+  },
   "compilerOptions": {
     "jsx": "react",
     "jsxFactory": "React.createElement",

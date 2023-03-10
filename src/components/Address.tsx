@@ -31,5 +31,3 @@ export const Address = ({
   }
   return <span className={classes}>{newAddress}</span>;
 };
-
-export default Address;

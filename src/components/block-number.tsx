@@ -14,5 +14,3 @@ export const BlockNumber = ({ className, styled }: BlockNumberProps) => {
   if (!data || !isSuccess) return <span className={classes}>0</span>;
   return <span className={classes}>{data}</span>;
 };
-
-export default BlockNumber;

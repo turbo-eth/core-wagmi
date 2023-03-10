@@ -21,5 +21,3 @@ export const WalletNonce = ({ className, styled }: WalletNonceProps) => {
   }, [isSuccess, signer]);
   return <span className={classes}>{nonce}</span>;
 };
-
-export default WalletNonce;

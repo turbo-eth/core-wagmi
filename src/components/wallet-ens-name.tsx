@@ -17,5 +17,3 @@ export const WalletEnsName = ({ className, styled }: WalletEnsNameProps) => {
   if (!isConnected || !data || !isSuccess) return null;
   return <span className={classes}>{data}</span>;
 };
-
-export default WalletEnsName;

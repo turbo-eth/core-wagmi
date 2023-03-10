@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'clsx';
 import { useAccount } from 'wagmi';
-import Address from './Address';
+import { Address } from './address';
 
 interface WalletAddressProps {
   className?: string;
@@ -32,9 +32,3 @@ export const WalletAddress = ({
     </span>
   );
 };
-
-WalletAddress.defaultProps = {
-  truncate: false,
-};
-
-export default WalletAddress;

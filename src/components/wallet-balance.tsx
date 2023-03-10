@@ -6,15 +6,13 @@ import { trimFormattedBalance } from '../utils/trimFormattedBalance';
 interface WalletBalanceProps {
   className?: string;
   decimals?: number;
-  styled?: boolean;
 }
 
 export const WalletBalance = ({
   className,
-  decimals,
-  styled,
+  decimals = 4,
 }: WalletBalanceProps) => {
-  const classes = classNames('WalletBalance', { styled }, className);
+  const classes = classNames('WalletBalance', className);
 
   const { address, isConnected } = useAccount();
   const { data, isSuccess } = useBalance({
@@ -28,10 +26,3 @@ export const WalletBalance = ({
     </span>
   );
 };
-
-WalletBalance.defaultProps = {
-  decimals: 4,
-  truncate: false,
-};
-
-export default WalletBalance;
