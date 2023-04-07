@@ -7,16 +7,19 @@ interface EnsNameProps {
   className?: string;
   address: `0x${string}`;
   truncate: boolean;
+  chainId?: number;
 }
 
 export const EnsName = ({
   className,
   address,
   truncate = false,
+  chainId = 1,
 }: EnsNameProps) => {
   const classes = classNames(className, 'EnsName');
   const { data, isSuccess } = useEnsName({
     address: address,
+    chainId: chainId,
   });
   if (!isSuccess) return null;
   if (!data) {
