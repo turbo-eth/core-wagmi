@@ -12,5 +12,5 @@ export const BlockNumber = ({ className, styled }: BlockNumberProps) => {
   const { data, isSuccess } = useBlockNumber();
 
   if (!data || !isSuccess) return <span className={classes}>0</span>;
-  return <span className={classes}>{data}</span>;
+  return <span className={classes}>{String(data)}</span>;
 };
