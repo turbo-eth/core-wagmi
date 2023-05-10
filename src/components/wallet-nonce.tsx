@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'clsx';
-import { useSigner } from 'wagmi';
+import { useAccount, usePublicClient } from 'wagmi';
 
 interface WalletNonceProps {
   className?: string;
@@ -9,15 +9,18 @@ interface WalletNonceProps {
 
 export const WalletNonce = ({ className, styled }: WalletNonceProps) => {
   const classes = classNames(className, 'WalletNonce', { styled });
-  const { data: signer, isSuccess } = useSigner();
+  const publicClient = usePublicClient();
+  const { address } = useAccount();
   const [nonce, setNonce] = React.useState<number>(0);
   React.useEffect(() => {
     (async () => {
-      if (signer) {
-        const nonce = await signer.getTransactionCount();
+      if (publicClient && address) {
+        const nonce = await publicClient.getTransactionCount({
+          address,
+        });
         setNonce(nonce);
       }
     })();
-  }, [isSuccess, signer]);
+  }, [publicClient, address]);
   return <span className={classes}>{nonce}</span>;
 };

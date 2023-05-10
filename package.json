@@ -1,6 +1,6 @@
 {
   "name": "@turbo-eth/core-wagmi",
-  "version": "0.0.0-beta.6",
+  "version": "0.0.0-beta.7",
   "license": "MIT",
   "author": "Kames Geraghty",
   "source": "src/index.tsx",
@@ -75,19 +75,19 @@
     "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^8.0.2",
     "microbundle": "^0.15.1",
-    "typedoc": "^0.22.10",
-    "typedoc-plugin-markdown": "^3.11.8",
     "react": ">=17",
     "react-dom": ">=17",
     "size-limit": "^8.1.0",
     "tslib": "^2.4.1",
+    "typedoc": "^0.22.10",
+    "typedoc-plugin-markdown": "^3.11.8",
     "typescript": "^4.9.4"
   },
   "dependencies": {
     "classnames": "2.3.1",
     "clsx": "^1.2.1",
     "prop-types": "15.8.1",
-    "viem": "^0.1.7",
-    "wagmi": "0.11.7"
+    "viem": "^0.3.19",
+    "wagmi": "1.0.1"
   }
 }
