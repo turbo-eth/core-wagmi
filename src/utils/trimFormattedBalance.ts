@@ -6,6 +6,8 @@ export function trimFormattedBalance(
     return '0';
   }
   const [integer, decimal] = balance.split('.');
+  if (!decimal) return integer;
+
   const trimmedDecimal = decimal.slice(0, decimals);
   return `${integer}.${trimmedDecimal}`;
 }
